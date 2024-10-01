@@ -1,5 +1,3 @@
-+79
-Original file line number	Diff line number	Diff line change
 pipeline {
     agent {
         label 'AGENT-1'
