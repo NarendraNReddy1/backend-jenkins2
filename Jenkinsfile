@@ -79,13 +79,13 @@ pipeline {
             }
         }
 
-        //  stage("Quality Gate") {
-        //     steps {
-        //       timeout(time: 30, unit: 'MINUTES') {
-        //         waitForQualityGate abortPipeline: true
-        //       }
-        //     }
-        // } 
+         stage("Quality Gate") {
+            steps {
+              timeout(time: 30, unit: 'MINUTES') {
+                waitForQualityGate abortPipeline: true
+              }
+            }
+        } 
 
          stage('Nexus Artifact Upload'){
             steps{
@@ -109,11 +109,11 @@ pipeline {
             }
         }
         stage('Deploy'){
-            // when{
-            //     expression{
-            //         params.deploy
-            //     }
-            // }
+            when{
+                expression{
+                    params.deploy
+                }
+            }
             steps{
                 script{
                     def params = [
